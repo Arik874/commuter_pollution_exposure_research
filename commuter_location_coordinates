@@ -1,0 +1,42 @@
+import pandas as pd
+import folium
+
+# Assuming you have a dataset with columns: 'Latitude', 'Longitude', 'Concentration'
+df_map = pd.read_csv(' ')
+
+# Create a folium map centered at the mean latitude and longitude
+map_center = [df_map['LATITUDE'].mean(), df_map['LONGITUDE'].mean()]
+chemical_map = folium.Map(location=map_center, zoom_start=10)
+
+# Starting and ending coordinates
+start_coord = [xxxx, xxxx]
+end_coord = [xxxx, xxxx]
+
+# Initialize a list to store coordinates for the trail
+trail_coordinates = [start_coord]
+
+# Add markers for each data point (chemical concentration) on the map
+for index, row in df_map.iterrows():
+    coord = [row['LATITUDE'], row['LONGITUDE']]
+
+    # Add the coordinates to the trail
+    trail_coordinates.append(coord)
+
+    folium.CircleMarker(location=coord,
+                        radius=5,
+                        color='lightgreen',
+                        fill=True,
+                        fill_color='green',
+                        fill_opacity=0.7,
+                        popup=f"CONCENTRATION: {row['CONCENTRATION']}"
+                        ).add_to(chemical_map)
+
+# Add the ending coordinates to the trail
+trail_coordinates.append(end_coord)
+
+# Add the trail to the map
+folium.PolyLine(locations=trail_coordinates, color='darkblue', weight=2.5, opacity=1).add_to(chemical_map)
+
+# Save or display the map
+chemical_map.save('xxxx.html')
+chemical_map
