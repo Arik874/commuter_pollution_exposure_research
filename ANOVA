@@ -1,0 +1,35 @@
+import pandas as pd
+
+# Load the morning and evening datasets
+morning_df = pd.read_csv('')  # Replace with the path to your morning dataset
+evening_df = pd.read_csv('')  # Replace with the path to your evening dataset
+
+# Display the first few rows to confirm correct loading
+print(morning_df.head())
+print(evening_df.head())
+from scipy.stats import f_oneway
+
+# List of pollutants to compare
+pollutants = ['PM1', 'PM2.5', 'PM10', 'CO2', 'HCHO']
+
+# Perform ANOVA for each pollutant
+for pollutant in pollutants:
+    morning_pollutant = morning_df[pollutant]
+    evening_pollutant = evening_df[pollutant]
+
+    # Perform ANOVA
+    f_stat, p_value = f_oneway(morning_pollutant, evening_pollutant)
+
+    # Output results
+    print(f"--- {pollutant} ---")
+    print(f"F-statistic: {f_stat:.2f}")
+    print(f"P-value: {p_value:.4f}")
+
+    # Interpretation
+    if p_value < 0.05:
+        print(f"Significant difference in {pollutant} levels between morning and evening.")
+    else:
+        print(f"No significant difference in {pollutant} levels between morning and evening.")
+    print("\n")
+
+
