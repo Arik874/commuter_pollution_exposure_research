@@ -1,0 +1,39 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+
+df = pd.read_csv(' ')
+
+# Assuming 'Time' is a column in your dataset
+time_column = 'Time'
+
+# Set Seaborn style
+sns.set(style="whitegrid")
+
+# Plotting chemical concentrations over time
+fig, ax1 = plt.subplots(figsize=(25, 25))
+
+# Define a color palette (adjust as needed)
+palette = sns.color_palette("husl", n_colors=len(df.columns[1:]))
+
+# Loop through each chemical column except the last one
+for i, column in enumerate(df.columns[1:]):
+    if i == 4:  # Use a secondary y-axis for the 6th column (index 5) # For HCHO in this case 
+        ax2 = ax1.twinx()
+        ax2.plot(df[time_column], df[column], label=column, color=palette[i], marker='^', linestyle='-', linewidth=2)
+        ax2.set_ylabel(f'{column} (Secondary Axis)', color=palette[i])
+        ax2.tick_params(axis='y', labelcolor=palette[i])
+    else:
+        ax1.plot(df[time_column], df[column], label=column, color=palette[i], marker='*', linestyle='-', linewidth=2)
+
+# Adding labels and title
+ax1.set_xlabel('Time(Seconds)')
+ax1.set_ylabel('Chemical Concentration', color='black')
+ax1.set_title(' ')
+
+# Adding a legend for the primary y-axis
+ax1.legend(loc='upper left')
+
+# Show the plot
+plt.show()
