@@ -1,5 +1,8 @@
 # commuter_pollution_exposure_research
-code snippets for the analysis of the commuter exposure research study
+Code snippets for the analysis of the commuter exposure research study
+
+Published Research Article - doi: https://doi.org/10.1016/j.geogeo.2024.100346
+Geosystems and Geoenvironment , Elsevier - ScienceDirect
 
 Images files : 
 
