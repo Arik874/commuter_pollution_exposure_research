@@ -1,7 +1,8 @@
 # commuter_pollution_exposure_research
 Code snippets for the analysis of the commuter exposure research study
 
-Published Research Article : https://doi.org/10.1016/j.geogeo.2024.100346
+Published Research Article : College bus commuter exposures to air pollutants in Indian city: The urban-rural transportation exposure study
+https://doi.org/10.1016/j.geogeo.2024.100346
 Geosystems and Geoenvironment , Elsevier - ScienceDirect
 
 Images files : 
